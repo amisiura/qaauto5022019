@@ -20,3 +20,7 @@ Home assignment 08.02.2019
 	
 
 //div[@class="g"]
+
+//div[@class="rc"]//div[@class="r"]/a[@href]
+
+//cite[@class='iUh30']

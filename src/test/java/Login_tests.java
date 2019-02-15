@@ -13,7 +13,7 @@ public class Login_tests {
         String login = "anonim3225@gmail.com" ;
         String pswd = "Qwerty12" ;
 
-        WebElement fieldLogin = driver.findElement(By.name("/session_key"));//
+        WebElement fieldLogin = driver.findElement(By.name("session_key"));//
         WebElement fieldPassword = driver.findElement(By.name("session_password"));//
 
         fieldLogin.sendKeys(login);

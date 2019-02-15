@@ -40,7 +40,7 @@ public class BadCodeExample {
                 System.out.println("searchTerm not found");
             }
         }
-        if (k > linksArray.size() || k <= 0) // out of score! сравниваем переменную с длиной массива найденых ссылок
+        if (k > linksArray.size()) // out of score! сравниваем переменную с длиной массива найденых ссылок
         {
             driver.get(linksArray.get(0));// если в массиве нет столько ссылок, переходим на первую по порядку ссылку на сайт
         } else {
@@ -59,6 +59,8 @@ public class BadCodeExample {
             System.out.println("searchTerm Not Found");
         }
         */
+
+
         /////////-------
 
     }
