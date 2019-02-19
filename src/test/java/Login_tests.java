@@ -30,9 +30,11 @@ public class Login_tests {
         LandingPage landingPage = new LandingPage(driver);
         landingPage.login("anonim3225@gmail.com", "Qwerty12");
 
-        WebElement profileMenuItem = driver.findElement(By.xpath("//li[@id='profile-nav-item']"));
-        profileMenuItem.isDisplayed();
-        Assert.assertTrue(profileMenuItem.isDisplayed(), "prifileMenuItem is displayed on Home Page");
+      //  WebElement profileMenuItem = driver.findElement(By.xpath("//li[@id='profile-nav-item']"));
+        HomePage homePage = new HomePage(driver);
+        homePage.meIcon();
+        //profileMenuItem.isDisplayed();
+        Assert.assertTrue(homePage.meIcon(), "profileMenuItem is displayed on Home Page");
         Assert.assertEquals(driver.getCurrentUrl(), "https://www.linkedin.com/feed/",
                 "Home Page URL is not correct");
     }
@@ -41,23 +43,13 @@ public class Login_tests {
 
 
     @Test()
-    public void negativeLoginTestIncorrectEmail() {
+    public void negativeLoginTestIncorrectEmail() {// неверный формат емейла id="error-for-username" + .isEnabled()=true
+        LoginSubmit loginSubmit = new LoginSubmit(driver);
+        loginSubmit.login("anonim3225com", "Qwerty12");
 
-        WebElement fieldUserEmailField = driver.findElement(By.xpath("//input[@id='login-email']"));//
-        WebElement fieldUserPasswordField = driver.findElement(By.xpath("//input[@id='login-password']"));//
-        WebElement buttonSubmit = driver.findElement(By.xpath("//input[@id='login-submit']"));//
-        String login;
-        String pswd;
 
-        // неверный формат емейла id="error-for-username" + .isEnabled()=true
-        login = "anonim3225";
-        pswd = "Qwerty12";
-
-        fieldUserEmailField.sendKeys(login);
-        fieldUserPasswordField.sendKeys(pswd);
-        buttonSubmit.sendKeys(Keys.ENTER);
         WebElement userNameError = driver.findElement(By.xpath("//div[@id='error-for-username']"));
-        Assert.assertEquals(userNameError.getText(), "Please enter a valid email address.");
+        Assert.assertEquals(userNameError.getText(), "Please enter a valid email address.","Email is not valid");
     }
 
     @Test()
