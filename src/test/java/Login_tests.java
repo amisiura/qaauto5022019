@@ -25,18 +25,10 @@ public class Login_tests {
     @Test
     public void succesfullLoginTest() {
 
-
         //Home task 12.02.2019
-        String login = "anonim3225@gmail.com";
-        String pswd = "Qwerty12";
 
-        WebElement fieldUserEmailField = driver.findElement(By.xpath("//input[@id='login-email']"));//
-        WebElement fieldUserPasswordField = driver.findElement(By.xpath("//input[@id='login-password']"));//
-        WebElement buttonSubmit = driver.findElement(By.xpath("//input[@id='login-submit']"));//
-
-        fieldUserEmailField.sendKeys(login);
-        fieldUserPasswordField.sendKeys(pswd);
-        buttonSubmit.sendKeys(Keys.ENTER);
+        LandingPage landingPage = new LandingPage(driver);
+        landingPage.login("anonim3225@gmail.com", "Qwerty12");
 
         WebElement profileMenuItem = driver.findElement(By.xpath("//li[@id='profile-nav-item']"));
         profileMenuItem.isDisplayed();
