@@ -31,7 +31,7 @@ public class LoginTests {
 
         HomePage homePage = new HomePage(driver);
 
-        Assert.assertTrue(homePage.meIcon(), "profileMenuItem is displayed on Home Page");
+        Assert.assertTrue(homePage.isIconExist(), "profileMenuItem is displayed on Home Page");
         Assert.assertEquals(driver.getCurrentUrl(), "https://www.linkedin.com/feed/", "Home Page URL is not correct");
     }
 
