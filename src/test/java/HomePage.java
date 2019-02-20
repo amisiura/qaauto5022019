@@ -18,7 +18,7 @@ public class HomePage {
 
     public boolean meIcon() {
         return
-        profileMenuItem.isDisplayed();
+                profileMenuItem.isDisplayed();
     }
 }
 
