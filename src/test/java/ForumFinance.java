@@ -1,4 +1,6 @@
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -16,25 +18,15 @@ public class ForumFinance {
             driver.get("https://www.linkedin.com/");// переходим на заданную страницу
         }
 
-        @AfterMethod  // задаем посткондишены
-        public void afterMethod() {
-            driver.quit();
-        }
-
         @Test
-        public void succesfullLoginTest() {
+        public void testTtt() {
+            WebElement ttt = driver.findElement(By.xpath("//input[@id='login-submit']"));
 
-            //Home task 12.02.2019
-
-            LandingPage landingPage = new LandingPage(driver);
-            landingPage.login("anonim3225@gmail.com", "Qwerty12");
-
-            //  WebElement profileMenuItem = driver.findElement(By.xpath("//li[@id='profile-nav-item']"));
-            HomePage homePage = new HomePage(driver);
-            homePage.meIcon();
-            //profileMenuItem.isDisplayed();
-            Assert.assertTrue(homePage.meIcon(), "profileMenuItem is displayed on Home Page");
-            Assert.assertEquals(driver.getCurrentUrl(), "https://www.linkedin.com/feed/",
+            if( ttt.isDisplayed() ){
+                System.out.print("Это оператор if");
+            }else{
+                System.out.print("Это оператор else");
+            }
+        }
 
         }
-}

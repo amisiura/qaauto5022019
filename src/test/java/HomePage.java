@@ -3,23 +3,29 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class HomePage {
-    WebDriver driver;
+    private WebDriver driver;
 
     WebElement profileMenuItem;
 
-    public HomePage(WebDriver driver) {//
+    public HomePage(WebDriver driver) {
         this.driver = driver;
         initElements();
     }
 
-    public void initElements() {
+    private void initElements() {
         profileMenuItem = driver.findElement(By.xpath("//li[@id='profile-nav-item']"));
     }
 
-    public boolean isIconExist() {
+    public boolean isPageLoaded() {
         return
-                profileMenuItem.isDisplayed();
+                profileMenuItem.isDisplayed()
+                        && driver.getCurrentUrl().contains("/feed")
+                        && driver.getTitle().contains("LinkedIn");
     }
+
+
 }
+
+
 
 
