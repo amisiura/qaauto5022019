@@ -22,8 +22,6 @@ public class HomePage {
                         && driver.getCurrentUrl().contains("/feed")
                         && driver.getTitle().contains("LinkedIn");
     }
-
-
 }
 
 

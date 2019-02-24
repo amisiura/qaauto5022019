@@ -6,7 +6,6 @@ public class LoginSubmit {
 
     WebDriver driver;
 
-
     WebElement userNameError;
     WebElement passwordError;
 
