@@ -1,31 +1,39 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class LoginSubmit {
 
-    WebDriver driver;
+    private WebDriver driver;
 
-    WebElement userNameError;
-    WebElement passwordError;
+    @FindBy(xpath="//div[@id='error-for-username']")
+    private WebElement userNameError;
+
+    @FindBy(xpath="//div[@id='error-for-password']")
+    private WebElement passwordError;
+
+    @FindBy(xpath="//form[@class='login__form']")
+    private WebElement loginForm;
 
     public LoginSubmit(WebDriver driver) {//
         this.driver = driver;
-        initElements();
-    }
-
-    public void initElements() {
-        userNameError = driver.findElement(By.xpath("//div[@id='error-for-username']"));
-        passwordError = driver.findElement(By.xpath("//div[@id='error-for-password']"));
+        PageFactory.initElements(driver, this);
     }
 
 
-    public String userNameErrorGetText(){
+    public boolean isPageLoaded(){
+      return
+              loginForm.isDisplayed();
+    }
+
+    public String getUserNameErrorGetText(){
         return
                 userNameError.getText();
     }
 
-    public String passwordErrorGetText(){
+    public String getPasswordErrorGetText(){
         return
                 passwordError.getText();
     }

@@ -1,32 +1,52 @@
-//этот класс обеспечивает заход на страницу линкедин
-import org.openqa.selenium.By;
+
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class LandingPage {
+
     private WebDriver driver;
 
-    WebElement fieldUserEmailField ;//
-    WebElement fieldUserPasswordField ;//
-    WebElement buttonSubmit ;//
+    @FindBy(xpath="//input[@id='login-email']")
+    private WebElement fieldUserEmailField ;//
+
+    @FindBy(xpath="//input[@id='login-password']")
+    private WebElement fieldUserPasswordField ;//
+
+    @FindBy(id="login-submit")
+    private WebElement buttonSubmit ;//
 
     public LandingPage(WebDriver driver) {//
         this.driver=driver;
-        initElements();
-    }
-    private void initElements(){
-        fieldUserEmailField =driver.findElement(By.xpath("//input[@id='login-email']"));//
-        fieldUserPasswordField= driver.findElement(By.xpath("//input[@id='login-password']"));//
-        buttonSubmit=driver.findElement(By.id("login-submit"));
+        PageFactory.initElements(driver, this); // this это класс, в данном случае текущий. Можно было указать LandingPage
     }
 
 
-    public void login (String userEmail, String userPassword ) {
+
+    public Object login (String userEmail, String userPassword, int source) {
         fieldUserEmailField.sendKeys(userEmail);
         fieldUserPasswordField.sendKeys(userPassword);
         buttonSubmit.sendKeys(Keys.ENTER);
+        if (source == 1)
+            {return new HomePage(driver);
+            }
+        else
+        {return new LoginSubmit(driver);
+        }
+
     }
+
+/*    public LoginSubmit loginToLoginSubmit (String userEmail, String userPassword ) {
+        fieldUserEmailField.sendKeys(userEmail);
+        fieldUserPasswordField.sendKeys(userPassword);
+        buttonSubmit.sendKeys(Keys.ENTER);
+        return new LoginSubmit(driver);
+    }*/
+
+
+
 
     public boolean isPageLoaded() {
         return
