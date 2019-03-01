@@ -35,7 +35,6 @@ public class LandingPage {
         else
         {return new LoginSubmit(driver);
         }
-
     }
 
 /*    public LoginSubmit loginToLoginSubmit (String userEmail, String userPassword ) {

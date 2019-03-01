@@ -53,6 +53,7 @@ public class LoginTests {
 
     @Test(dataProvider="validDataNegativeTest")
     public void negativeLoginTestIncorrectEmail(String userEmail, String userPassword, String userNameErrorGetText, String passwordErrorGetText) {// неверный формат емейла id="error-for-username" + .isEnabled()=true
+
         LoginSubmit loginSubmit= (LoginSubmit) landingPage.login(userEmail, userPassword,2);
 
         Assert.assertTrue(loginSubmit.isPageLoaded(),"Page is not loaded");
