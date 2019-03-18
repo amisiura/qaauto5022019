@@ -4,7 +4,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 public class BaseTest {
-    private WebDriver driver;
+    WebDriver driver;
     LandingPage landingPage;
 
     @BeforeMethod// задаем прекондишены
@@ -15,11 +15,11 @@ public class BaseTest {
         landingPage = new LandingPage(driver);
 
     }
-
+/*
     @AfterMethod  // задаем посткондишены
     public void afterMethod() throws InterruptedException  {
         Thread.sleep(1000);
         driver.quit();
-    }
+    }*/
 
 }
