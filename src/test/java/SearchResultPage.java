@@ -20,9 +20,18 @@ public class SearchResultPage {
         PageFactory.initElements(driver, this); // this это класс, в данном случае текущий. Можно было указать LandingPage
     }
 
+    @FindBy(xpath = "//h3[contains(@class, 'search-results__total')]")
+    private WebElement showResults;
 
     @FindBy(xpath = "//input[@role=\"combobox\"]")
     private WebElement fieldInputSearch;//
+
+    public boolean isPageLoaded() { //прописать критерии загрузки
+        return
+                   showResults.isDisplayed()&&
+                driver.getCurrentUrl().contains("/search/results/")&&
+                driver.getTitle().contains("LinkedIn");
+    }
 
     public void searchTest (String searchWord) throws InterruptedException {// полиморфизм
         fieldInputSearch.sendKeys(searchWord);
@@ -31,8 +40,7 @@ public class SearchResultPage {
         List<WebElement> searchResultElements = driver.findElements(By.xpath("//li[@class=\"search-result search-result__occluded-item ember-view\"]"));
         numberFoundResults=searchResultElements.size();
         positiveResultCounter =0;
-        System.out.println("List is :  "+ searchResultElements);
-        System.out.println("Number of elements in list is =  " + numberFoundResults);
+
 
         /* задаю цикл по списку результатов поиска searchResultElement*/
         for (WebElement searchResultElement : searchResultElements) {
