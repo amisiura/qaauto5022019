@@ -1,3 +1,5 @@
+package page;
+
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,15 +10,15 @@ public class HomePage {
 
     private WebDriver driver;
 
-    @FindBy(xpath ="//div@[class=\"nav-search-typeahead\"]")
+    @FindBy(xpath ="//div[@class=\"nav-search-typeahead\"]//input")
     private WebElement searchField;
 
-    @FindBy(xpath ="//form@[@id='extended-nav-search']")
+    @FindBy(xpath ="//form[@id='extended-nav-search']")
     private WebElement profileMenuItem;
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
-       // PageFactory.initElements(driver, this);
+       PageFactory.initElements(driver, this);
     }
 
 
@@ -26,14 +28,19 @@ public class HomePage {
                          driver.getCurrentUrl().contains("/feed")
                         && driver.getTitle().contains("LinkedIn");
     }
-
     //создаем новый метод для поиска HR, получаем переход на новую страницу с результатами поиска и создаем ретурном новый объект для этой страницы
     public SearchResultPage search(String searchTerm) {
         searchField.sendKeys(searchTerm);
         searchField.sendKeys(Keys.ENTER);
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return new SearchResultPage(driver);
-
     }
+
+
 }
 
 

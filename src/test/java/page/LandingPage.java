@@ -1,3 +1,4 @@
+package page;
 
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -20,7 +21,7 @@ public class LandingPage {
 
     public LandingPage(WebDriver driver) {//
         this.driver = driver;
-        PageFactory.initElements(driver, this); // this это класс, в данном случае текущий. Можно было указать LandingPage
+        PageFactory.initElements(driver, this); // this это класс, в данном случае текущий. Можно было указать page.LandingPage
     }
 
 /*
@@ -29,9 +30,9 @@ public class LandingPage {
         fieldUserPasswordField.sendKeys(userPassword);
         buttonSubmit.sendKeys(Keys.ENTER);
         if (source == 1) {
-            return new HomePage(driver);
+            return new page.HomePage(driver);
         } else {
-            return new LoginSubmit(driver);
+            return new page.LoginSubmitPage(driver);
         }
     }*/
     ///////////////////////
@@ -54,15 +55,15 @@ public class LandingPage {
         if (driver.getCurrentUrl().contains("/feed")) {
             return (ExpectedPage) new HomePage(driver);
         } else {
-            return (ExpectedPage) new LoginSubmit(driver);
+            return (ExpectedPage) new LoginSubmitPage(driver);
         }
     }
 
-/*    public LoginSubmit loginToLoginSubmit (String userEmail, String userPass  word ) {
+/*    public page.LoginSubmitPage loginToLoginSubmit (String userEmail, String userPass  word ) {
         fieldUserEmailField.sendKeys(userEmail);
         fieldUserPasswordField.sendKeys(userPassword);
         buttonSubmit.sendKeys(Keys.ENTER);
-        return new LoginSubmit(driver);
+        return new page.LoginSubmitPage(driver);
     }*/
 
 
