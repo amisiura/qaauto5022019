@@ -3,6 +3,8 @@ package test;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import page.HomePage;
+import page.LoginSubmitPage;
 
 public class LoginTests extends BaseTest{
 
@@ -35,10 +37,10 @@ public class LoginTests extends BaseTest{
     @Test(dataProvider="validDataNegativeTest")
     public void negativeLoginTestIncorrectEmail(String userEmail, String userPassword, String userNameErrorGetText, String passwordErrorGetText) {// неверный формат емейла id="error-for-username" + .isEnabled()=true
 
-        LoginSubmit loginSubmit= landingPage.login(userEmail, userPassword);
+        LoginSubmitPage loginSubmitPage= landingPage.login(userEmail, userPassword);
 
-        Assert.assertTrue(loginSubmit.isPageLoaded(),"page is not loaded");
-        Assert.assertEquals(loginSubmit.getUserNameErrorGetText(), userNameErrorGetText, "Email is not valid");
-        Assert.assertEquals(loginSubmit.getPasswordErrorGetText(), passwordErrorGetText, "Password is not valid");
+        Assert.assertTrue(loginSubmitPage.isPageLoaded(),"page is not loaded");
+        Assert.assertEquals(loginSubmitPage.getUserNameErrorGetText(), userNameErrorGetText, "Email is not valid");
+        Assert.assertEquals(loginSubmitPage.getPasswordErrorGetText(), passwordErrorGetText, "Password is not valid");
     }
 }

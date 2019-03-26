@@ -10,7 +10,6 @@ import java.util.List;
 
 public class SearchTests extends BaseTest {
 
-   // public String searchTerm ="HR";
     @DataProvider
     public Object[][] searchInputTest() {
         return new Object[][]{
