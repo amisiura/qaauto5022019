@@ -6,9 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class HomePage {
-
-    private WebDriver driver;
+public class HomePage extends BasePage {
 
     @FindBy(xpath ="//div[@class=\"nav-search-typeahead\"]//input")
     private WebElement searchField;
@@ -19,6 +17,7 @@ public class HomePage {
     public HomePage(WebDriver driver) {
         this.driver = driver;
        PageFactory.initElements(driver, this);
+        waitUntilElementIsVisible(searchField, 5);
     }
 
 
@@ -32,11 +31,6 @@ public class HomePage {
     public SearchResultPage search(String searchTerm) {
         searchField.sendKeys(searchTerm);
         searchField.sendKeys(Keys.ENTER);
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         return new SearchResultPage(driver);
     }
 

@@ -8,9 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class SearchResultPage {
-
-    private WebDriver driver;
+public class SearchResultPage extends BasePage {
 
     private String searchWord;
     public Integer numberFoundResults;

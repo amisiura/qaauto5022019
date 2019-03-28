@@ -13,7 +13,7 @@ public class SearchTests extends BaseTest {
     @DataProvider
     public Object[][] searchInputTest() {
         return new Object[][]{
-                {"anonim3225@gmail.com", "Qwerty12", "HR"}
+                {"a.l.e.x.e.u.s.1979@gmail.com", "Qwerty123123", "HR"}
         };
     }
 

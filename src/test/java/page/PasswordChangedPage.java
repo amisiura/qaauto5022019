@@ -5,8 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class PasswordChangedPage {
-    private WebDriver driver;
+public class PasswordChangedPage extends BasePage {
 
     @FindBy (xpath = "//button[@id='reset-password-submit-button']")
     private WebElement buttonGoToHomePage;
@@ -20,5 +19,9 @@ public class PasswordChangedPage {
     public HomePage backToHomePage (){
         buttonGoToHomePage.click();
         return new HomePage(driver);
+    }
+
+    protected boolean isPageLoaded() throws InterruptedException {
+        return true;
     }
 }

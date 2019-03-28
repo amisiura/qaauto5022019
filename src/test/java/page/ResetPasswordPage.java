@@ -9,8 +9,7 @@ import test.BaseTest;
 
 
 
-public class ResetPasswordPage extends BaseTest {
-    private WebDriver driver;
+public class ResetPasswordPage extends BasePage {
 
     @FindBy (xpath = "//input[@id='newPassword']")
     private WebElement newPasswordField;
@@ -32,13 +31,12 @@ public class ResetPasswordPage extends BaseTest {
     }
 
 
-    public PasswordChangedPage setNewPassword(String newPassword, String link) throws InterruptedException{
-        Thread.sleep(120000);
-        driver.get(link);
+    public PasswordChangedPage setNewPassword(String newPassword) throws InterruptedException{
+        driver.get(resetPasswordURL);
         newPasswordField.sendKeys(newPassword);
         newPasswordFieldConfirm.sendKeys(newPassword);
         buttonConfirm.sendKeys(Keys.ENTER);
-        Thread.sleep(3000);
+        Thread.sleep(1000);
 
         return new PasswordChangedPage(driver);
 

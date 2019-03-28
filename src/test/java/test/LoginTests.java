@@ -12,9 +12,9 @@ public class LoginTests extends BaseTest{
     @DataProvider
     public Object[][] validDataPositiveTest() {
         return new Object[][]{
-                {"anonim3225@gmail.com", "Qwerty12"}
-//              ,{"anoNIM3225@gmail.com", "Qwerty12"}
-//              ,{" anonim3225@gmail.com ", "Qwerty12"}
+                {"a.l.e.x.e.u.s.1979@gmail.com", "QpAlZm=1979"}
+//              ,{"a.l.e.X.E.u.s.1979@gmail.com", "QpAlZm=1979"}
+//              ,{" a.l.e.x.e.u.s.1979@gmail.com ", "QpAlZm=1979"}
         };
     }
 
@@ -29,8 +29,8 @@ public class LoginTests extends BaseTest{
     @DataProvider
     public Object[][] validDataNegativeTest() {
         return new Object[][]{
-                {"anonim3225", "Qwerty12", "Please enter a valid email address.",""},
-                {"anonim3225@gmail.com", "Qwerty123", "","Hmm, that's not the right password. Please try again or request a new one."}
+                {"a.l.e.x.e.u.s.1979", "QpAlZm=1979", "Please enter a valid email address.",""},
+                {"a.l.e.x.e.u.s.1979@gmail.com", "QpAlZm=197", "","Hmm, that's not the right password. Please try again or request a new one."}
         };
     }
 

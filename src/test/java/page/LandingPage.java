@@ -6,9 +6,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LandingPage {
-
-    private WebDriver driver;
+/**
+ * Class that decsribes LandingPage pageObject
+ */
+public class LandingPage extends BasePage {
 
     @FindBy(xpath = "//input[@id='login-email']")
     private WebElement fieldUserEmailField;//
@@ -22,6 +23,10 @@ public class LandingPage {
     @FindBy(xpath = "//a[@class=\"link-forgot-password\"]")
     private WebElement buttonForgotPassword;
 
+    /**
+     * Constructor of LandingPage class
+     * @param driver Browser object from Test
+     */
     public LandingPage(WebDriver driver) {//
         this.driver = driver;
         PageFactory.initElements(driver, this); // this это класс, в данном случае текущий. Можно было указать page.LandingPage
